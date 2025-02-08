@@ -3,7 +3,7 @@ Movie watchlist web app for WDD231
 
 ## Netlify URL
 
-
+wdd231moviewatchlist.netlify.app
 
 ## Setup
 
