@@ -1,0 +1,45 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+header, footer {
+    background: #007BFF;
+    color: white;
+    padding: 10px;
+}
+
+form {
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    max-width: 300px;
+    gap: 10px;
+}
+
+input, select, button {
+    padding: 8px;
+}
+
+button {
+    background: #007BFF;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #0056b3;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    background: #ddd;
+    padding: 8px;
+    margin-top: 5px;
+    border-radius: 5px;
+}
