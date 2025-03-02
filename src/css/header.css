@@ -1,0 +1,58 @@
+:root {
+    --primary-color: #D4A017;  /* Goldenrod */
+    --secondary-color: #4C9B8C; /* Medium Sea Green */
+    --tertiary-color: #D0C9C0;  /* Light Gray */
+    --accent-color: #D95D5D;    /* Indian Red */
+    --text-color: #F0E9D2;      /* Light Ivory */
+    --background-color: #1B2D2A;/* Gunmetal */
+    --header-footer-color: #007BFF;  /* Blue for header/footer */
+    --button-color: #007BFF;    /* Button Blue */
+    --button-hover-color: #0056b3; /* Button hover blue */
+    --list-item-bg: #ddd;        /* Light Gray for list items */
+    --input-bg: #333;           /* Dark background for inputs */
+    --input-border-color: #666; /* Border color for inputs */
+    --input-focus-color: #007BFF; /* Focus color for inputs */
+  }
+
+  .header {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid var(--primary-color);
+  }
+
+  .logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+  }
+  
+  .nav {
+    display: flex;
+  }
+  
+  .nav-list {
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .nav-item {
+    background-color: var(--background-color);
+    margin-right: 20px;
+    box-shadow: 0 0 0;
+  }
+  
+  .nav-link {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 1rem;
+  }
+  
+  .nav-link:hover {
+    text-decoration: underline;
+  }
