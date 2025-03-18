@@ -1,74 +1,57 @@
 import React, { useState } from "react";
+import { useContext } from 'react';
+import { WatchlistContext } from '../context/WatchlistContext'; 
 
-const MovieForm = ({ addMovie }) => {
-  const [title, setTitle] = useState("");
-  const [genre, setGenre] = useState("");
-  const [releaseYear, setReleaseYear] = useState("");
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isFormVisible, setIsFormVisible] = useState(false); // Controls form visibility
+const API_KEY = import.meta.env.VITE_OMDB_API_KEY;
 
-  const handleSubmit = (e) => {
+const MovieForm = () => {
+  const [searchTitle, setSearchTitle] = useState("");
+  const [movieData, setMovieData] = useState(null);
+  const { addMovie } = useContext(WatchlistContext); // Access addMovie function
+
+  const handleSearch = async (e) => {
     e.preventDefault();
-    if (title && genre && releaseYear) {
-      setIsModalOpen(true);
-    } else {
-      alert("Please fill out all fields.");
+    try {
+      const response = await fetch(`https://www.omdbapi.com/?apikey=${API_KEY}&t=${searchTitle}`);
+      const data = await response.json();
+      if (data.Response === "True") {
+        setMovieData(data); // Set movie data to display in form
+      } else {
+        setMovieData(null); // No movie found
+        alert("Movie not found!");
+      }
+    } catch (error) {
+      console.error("Error fetching movie details", error);
+    }
+  };
+
+  const handleAddMovie = () => {
+    if (movieData) {
+      addMovie(movieData); // Add the movie to the watchlist
+      setSearchTitle(''); // Clear search field
+      setMovieData(null); // Reset movie data
     }
   };
 
   return (
-    <div>
-      {/* Button to Show/Hide Form */}
-      {!isFormVisible && (
-        <>
-          <h2>Click the button below to add a new movie</h2>
-          <button onClick={() => setIsFormVisible(true)}>Add a New Movie</button>
-        </>
-      )}
+    <div className="movie-form">
+      <form onSubmit={handleSearch}>
+        <input
+          type="text"
+          value={searchTitle}
+          onChange={(e) => setSearchTitle(e.target.value)}
+          placeholder="Search for a movie..."
+        />
+        <button type="submit">Search Movie</button>
+      </form>
 
-      {/* Form - Only visible when isFormVisible is true */}
-      {isFormVisible && (
-        <div class='overlay'>
-          <form onSubmit={handleSubmit} className="form-container">
-          <div class="menu-icon" onClick={() => setIsFormVisible(false)}>
-            <div class="bar1"></div>
-            <div class="bar3"></div>
-          </div>
-            <label htmlFor="movieTitle">Movie Title:</label>
-            <input
-              type="text"
-              id="movieTitle"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-              required
-            />
-
-            <label htmlFor="genre">Genre:</label>
-            <select
-              id="genre"
-              value={genre}
-              onChange={(e) => setGenre(e.target.value)}
-              required
-            >
-              <option value="">Select a Genre</option>
-              <option value="Action">Action</option>
-              <option value="Comedy">Comedy</option>
-              <option value="Drama">Drama</option>
-            </select>
-
-            <label htmlFor="releaseYear">Release Year:</label>
-            <input
-              type="number"
-              id="releaseYear"
-              value={releaseYear}
-              onChange={(e) => setReleaseYear(e.target.value)}
-              min="1900"
-              max="2025"
-              required
-            />
-
-            <button type="submit">Add Movie</button>
-          </form>
+      {movieData && (
+        <div>
+          <h2>{movieData.Title} ({movieData.Year})</h2>
+          <img src={movieData.Poster} alt={`${movieData.Title} Poster`} />
+          <p><strong>Genre:</strong> {movieData.Genre}</p>
+          <p><strong>Plot:</strong> {movieData.Plot}</p>
+          <button onClick={handleAddMovie}>Add to Watchlist</button>
         </div>
       )}
     </div>

@@ -1,0 +1,27 @@
+
+  
+  #watchlist {
+    margin-top: 20px;
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  .watchlist-item {
+    background-color: var(--list-item-bg);
+    padding: 15px;
+    margin-top: 10px;
+    border-radius: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+
+  .movie-list-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    justify-content: center;
+    gap: 1rem;
+    margin: 0 auto;
+    max-width: 1200px;
+  }

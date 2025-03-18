@@ -64,13 +64,15 @@
     transform: rotate(-45deg);
   }
 
-  form {
-    position: absolute;
-    top: 50%; /* Center the form vertically */
-    left: 50%; /* Center the form horizontally */
-    transform: translate(-50%, -50%); /* Ensure it's exactly in the center */
+  .movie-form {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  form {
+    margin: 20px 0;
+    padding: 10px;
     gap: 15px;
     max-width: 250px;
     padding: 20px;
