@@ -1,10 +1,11 @@
 export const searchMovies = async (query) => {
-  const API_KEY = "YOUR_API_KEY"; // Replace with your OMDB API key
+  const API_KEY = import.meta.env.VITE_OMMDB_API_KEY;
   try {
     const response = await fetch(`https://www.omdbapi.com/?s=${query}&apikey=${API_KEY}`);
     const data = await response.json();
     
     if (data.Response === "True") {
+      console.log('data')
       return data.Search; // Return the list of search results
     } else {
       throw new Error(`No results found for "${query}"`);

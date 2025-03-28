@@ -10,6 +10,7 @@ const MovieItem = ({ index, movie }) => {
       <img src={movie.Poster} alt={`${movie.Title} Poster`} />
       <p><strong>Genre:</strong> {movie.Genre}</p>
       <p><strong>Plot:</strong> {movie.Plot}</p>
+      <p><strong>Watch Status:</strong> {movie.status}</p>
       <button onClick={() => removeMovie(index)}>Remove</button>
     </div>
   );

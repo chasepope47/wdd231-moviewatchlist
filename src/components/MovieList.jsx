@@ -17,7 +17,6 @@ const MovieList = () => {
           <p>No movies added yet.</p>
         )}
       </div>
-      
     </div>
   );
 };
