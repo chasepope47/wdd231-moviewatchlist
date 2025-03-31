@@ -1,0 +1,54 @@
+:root {
+  --primary-color: #D4A017;  /* Goldenrod */
+  --secondary-color: #4C9B8C; /* Medium Sea Green */
+  --tertiary-color: #D0C9C0;  /* Light Gray */
+  --accent-color: #D95D5D;    /* Indian Red */
+  --text-color: #F0E9D2;      /* Light Ivory */
+  --background-color: #1B2D2A;/* Gunmetal */
+  --header-footer-color: #007BFF;  /* Blue for header/footer */
+  --button-color: #007BFF;    /* Button Blue */
+  --button-hover-color: #0056b3; /* Button hover blue */
+  --list-item-bg: #ddd;        /* Light Gray for list items */
+  --input-bg: #333;           /* Dark background for inputs */
+  --input-border-color: #666; /* Border color for inputs */
+  --input-focus-color: #007BFF; /* Focus color for inputs */
+}   
+   
+   #watchlist {
+    margin-top: 20px;
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  .watchlist-item {
+    background-color: var(--list-item-bg);
+    padding: 15px;
+    margin-top: 10px;
+    border-radius: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+
+  @media (min-width: 768px) {
+    .watchlist-item {
+      background-color: var(--background-color);
+      padding: 15px;
+      margin-top: 10px;
+      border-radius: 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+  
+    .movie-list-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      justify-content: center;
+      gap: 1rem;
+      margin: 0 auto;
+      max-width: 1200px;
+    }
+  }
